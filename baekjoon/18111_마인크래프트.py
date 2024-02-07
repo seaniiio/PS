@@ -7,11 +7,10 @@ l = []
 for _ in range(n):
     l.append(list(map(int, sys.stdin.readline().split())))
 
-high, count = 0, 255 * 500 * 501
-for i in range(255, -1, -1):
+high, count = -1, 256 * 500 * 501
+for i in range(256, -1, -1):
     now_b = 0
     need_b = 0
-    time = 0
     for j in range(n):
         for k in range(m):
             if l[j][k] > i:
