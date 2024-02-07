@@ -13,6 +13,3 @@ for c in coins:
         if c <= k:
             dp[i] += dp[i - c]
 print(dp[k])
-            
-
-
