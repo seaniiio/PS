@@ -35,4 +35,3 @@ for i in range(n):
         answer = -1
 
 print(answer)
-            

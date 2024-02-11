@@ -1,17 +1,19 @@
-# 재귀
+import itertools
+
 n, k = map(int, input().split())
-nums = list(map(int, input().split()))
-nums.append(0)
-nums.sort(reverse=True)
-answer = 0
-def rec(m, d):
-    temp = m + nums[0] * (10 ** d)
-    if temp < n:
-        result = rec(temp, d+1)
-        return result
-    elif temp >= n:
-        for num in nums:
-            temp = m + num * (10 ** d)
-            if temp <= n:
-                return temp
-print(rec(0, 0))
+l = list(map(int, input().split()))
+l.sort(reverse=True)
+num_len = len(str(n)) # 3자리면 3
+result = 0
+
+for i in itertools.product(l, repeat=num_len):
+    num = int(''.join(list(map(str, i))))
+    if num <= n:
+        result = max(result, num)
+
+for i in itertools.product(l, repeat=num_len - 1):
+    num = int(''.join(list(map(str, i))))
+    if num <= n:
+        result = max(result, num)
+
+print(result)
