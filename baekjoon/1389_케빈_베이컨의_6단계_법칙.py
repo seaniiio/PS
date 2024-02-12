@@ -35,5 +35,4 @@ for i in range(1, n+1):
         min_list = [i]
 
 min_list.sort()
-print(min_list)
 print(min_list[0])
