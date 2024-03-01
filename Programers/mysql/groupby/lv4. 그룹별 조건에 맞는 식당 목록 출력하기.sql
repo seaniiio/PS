@@ -1,0 +1,11 @@
+SELECT A.MEMBER_NAME, B.REVIEW_TEXT, DATE_FORMAT(B.REVIEW_DATE, '%Y-%m-%d') AS REVIEW_DATE
+FROM MEMBER_PROFILE AS A JOIN REST_REVIEW AS B ON A.MEMBER_ID = B.MEMBER_ID
+WHERE A.MEMBER_ID = (SELECT MEMBER_ID
+                    FROM REST_REVIEW
+                     GROUP BY MEMBER_ID
+                    ORDER BY COUNT(*) DESC
+                     LIMIT 1)
+ORDER BY B.REVIEW_DATE, B.REVIEW_TEXT;
+
+/*where절에도 limit 1을 사용할 수 있다 (having은 안되는듯)
+*/
